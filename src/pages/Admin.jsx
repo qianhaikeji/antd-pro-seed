@@ -32,11 +32,7 @@ import QueryForm from '@/components/QueryForm'
 import toast from '@/components/Toast'
 import SwitchStatusTag from '@/widgets/SwitchStatusTag'
 import {ENUM_SWITCH_STATUS} from '@/enum'
-import ChannelSelect from '@/widgets/ChannelSelect'
 import StatusSelect from '@/widgets/StatusSelect'
-import { 
-  getChannelList, 
-}  from '@/services/api/channel'
 
 const {Text} = Typography
 const FormItem = Form.Item

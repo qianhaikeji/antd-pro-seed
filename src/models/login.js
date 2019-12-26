@@ -1,6 +1,6 @@
 import { routerRedux } from 'dva/router';
 import { stringify } from 'querystring';
-import { platformLogin, channelLogin,} from '@/services/api/auth';
+import { adminLogin } from '@/services/api/auth';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 const Model = {
@@ -10,15 +10,15 @@ const Model = {
     token: null,
     logined: false,
     profile: {},
-    userType: null
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const loginFunc = payload.type === 'platform' ? platformLogin : channelLogin
-      const rootUrl = payload.type === 'platform' ? '/platform' : '/channel'
+      const loginFunc = adminLogin
+      const rootUrl ='/'
+      const userType = 'admin'
       yield put({
         type: 'user/saveUserType',
-        payload: payload.type,
+        payload: userType,
       }); //
 
       try {
@@ -26,7 +26,7 @@ const Model = {
         console.log(response);
         yield put({
           type: 'changeLoginStatus',
-          payload: {...response, currentAuthority: payload.type},
+          payload: {...response, currentAuthority: userType},
         }); // Login successfully
   
         if (response) {
@@ -93,7 +93,6 @@ const Model = {
       return {
         ...state,
         status: payload.status,
-        type: payload.type,
         token: payload.token,
         logined: true,
       };

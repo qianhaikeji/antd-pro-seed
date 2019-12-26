@@ -10,7 +10,7 @@ export default {
   menu: {
     locale: true,
   },
-  title: 'WEDEX',
+  title: '浅海科技',
   pwa: false,
   iconfontUrl: '',
 };

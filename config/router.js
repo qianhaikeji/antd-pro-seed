@@ -23,11 +23,13 @@ const router = [
             redirect: '/welcome',
           },
           {
+            icon: 'home',
             path: '/welcome',
             name: 'homepage',
             component: './Welcome',
           },
           {
+            icon: 'setting',
             path: '/system',
             name: 'system',
             // authority: ['admin'],

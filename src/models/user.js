@@ -1,4 +1,4 @@
-import { getPlatformProfile, getChannelProfile } from '@/services/api/auth';
+import { getAdminProfile } from '@/services/api/auth';
 import { getAdminList } from '@/services/api/admin';
 const UserModel = {
   namespace: 'user',
@@ -17,7 +17,7 @@ const UserModel = {
 
     *fetchCurrent(_, { call, put, select }) {
       const userType = yield select((state) => state['user'].userType)
-      const profileFunc = userType === 'platform' ? getPlatformProfile : getChannelProfile
+      const profileFunc = getAdminProfile
       try {
         const response = yield call(profileFunc);
         yield put({
